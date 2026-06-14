@@ -29,7 +29,7 @@ function getPoints(
 }
 
 export function calculateRankings(
-  votes: any[]
+  votes: Record<string, string>[]
 ) {
   const scores: Record<
     string,
