@@ -28,7 +28,7 @@ export async function fetchVotes() {
       spreadsheetId:
         process.env.GOOGLE_SHEET_ID,
 
-      range: "Form Responses 1!A:H",
+      range: "1234!A:H",
     });
 
   return response.data.values || [];
