@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
+@import "@fontsource/inter";
+@import "@fontsource/bebas-neue";
+
 :root {
-  --background: #000000;
+  --background: #050505;
   --foreground: #ffffff;
+
+  --card: rgba(24, 24, 27, 0.7);
+
+  --border: rgba(255, 255, 255, 0.08);
+
+  --red: #dc2626;
+
+  --gold: #facc15;
+
+  --green: #22c55e;
 }
 
 html {
@@ -10,13 +23,98 @@ html {
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(220, 38, 38, 0.15),
+      transparent 30%
+    ),
+    var(--background);
+
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family: "Inter", sans-serif;
+
   min-height: 100vh;
+
+  overflow-x: hidden;
 }
 
-/* ESPN-style scrollbar */
+/* Headings */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family:
+    "Bebas Neue",
+    sans-serif;
+
+  letter-spacing: 0.04em;
+}
+
+/* Glass cards */
+
+.glass {
+  background: var(--card);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid
+    var(--border);
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Glow */
+
+.glow-red {
+  box-shadow:
+    0 0 25px
+    rgba(220, 38, 38, 0.4);
+}
+
+.glow-gold {
+  box-shadow:
+    0 0 30px
+    rgba(250, 204, 21, 0.35);
+}
+
+/* Hover animation */
+
+.hover-lift {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 15px 35px
+    rgba(0, 0, 0, 0.5);
+}
+
+/* ESPN ticker animation */
+
+@keyframes ticker {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.ticker {
+  animation:
+    ticker 22s linear infinite;
+}
+
+/* Scrollbar */
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -27,19 +125,34 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #dc2626;
+  background: linear-gradient(
+    to bottom,
+    #dc2626,
+    #991b1b
+  );
+
   border-radius: 999px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #ef4444;
+/* Selection */
+
+::selection {
+  background: rgba(
+    220,
+    38,
+    38,
+    0.4
+  );
 }
 
-/* Smooth animations */
+/* Responsive */
 
-* {
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
+@media (max-width: 768px) {
+  h1 {
+    font-size: 4rem !important;
+  }
+
+  h2 {
+    font-size: 2.5rem !important;
+  }
 }
